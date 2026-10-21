@@ -1,0 +1,4 @@
+ProGlove SDK 0.4.14.0
+Source: Proception-AI/pro c26f7eaa48
+Platforms: macos-arm64 linux-arm64 linux-x64
+Built: 2026-10-21T22:20:12Z
