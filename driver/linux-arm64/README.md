@@ -1,6 +1,6 @@
-# ProGlove driver — linux-arm64
+# ProGlove drivers — linux-arm64
 
-Version 0.4.14.0
+ProGlove SDK 0.3.11.0 · ProWristCam SDK 0.3.0.0
 
 `proglove-headless-ipc-host` owns the glove's USB link, filters the tactile
 stream and publishes it over ZeroMQ for the SDK:
@@ -10,4 +10,15 @@ stream and publishes it over ZeroMQ for the SDK:
 ```
 
 Status: `ipc:///tmp/proglove-<side>-status.ipc`, commands
-`ipc:///tmp/proglove-<side>-commands.ipc`. `--help` lists every option.
+`ipc:///tmp/proglove-<side>-commands.ipc`.
+
+`prowristcam-headless-ipc-host` captures the wrist camera and publishes JPEG
+frames for the SDK:
+
+```
+./prowristcam-headless-ipc-host --side left|right [--camera-id <serial or name>]
+```
+
+Frames: `ipc:///tmp/prowristcam-<side>-stream.ipc`, control
+`ipc:///tmp/prowristcam-<side>-control.ipc`. `--help` lists every option of
+either host.
