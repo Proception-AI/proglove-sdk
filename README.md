@@ -1,53 +1,40 @@
 # ProGlove SDK
 
-Client SDK and host driver for the ProGlove tactile glove (`PRO-G01` / `PRO-G02`).
+This repository hosts the ProGlove SDK and driver, with the ProWristCam SDK
+that goes with the glove. There is one product line per branch. `main`
+carries no code: pick the line that matches your glove and clone that branch.
 
-Version 0.4.14.0
+| Product line | Branch | Gloves | Status |
+|---|---|---|---|
+| ProGlove Gen1 | `release/gen1` | `PRO-G01` | maintenance |
+| ProGlove Gen2 | `release/gen2` | `PRO-G02` | current |
 
-## Layout
+A `PRO-G01` glove reflashed with Gen2 firmware becomes a `PRO-G02` and moves
+to the Gen2 line. The serial on the glove's label names its line.
 
+## Get a line
+
+```bash
+git clone --branch release/gen2 --single-branch https://github.com/Proception-AI/proglove-sdk.git
+# or
+git clone --branch release/gen1 --single-branch https://github.com/Proception-AI/proglove-sdk.git
 ```
-sdk/proglove_sdk/
-├── cpp/       C header, C++ RAII wrapper, CMake package
-├── python/    ctypes bindings (pip install -e sdk/proglove_sdk/python)
-├── android/   AAR, JNI library and header for USB OTG
-└── lib/       libproglove_client_sdk: .dylib (macOS arm64), .so (Linux x86_64),
-               _aarch64.so (Linux arm64)
-driver/
-├── <platform>/proglove-headless-ipc-host   the host that owns the glove's USB link
-└── udev/      Linux rules and installer for non-root USB access
+
+Already cloned? `git fetch origin && git checkout release/gen2`.
+
+## Releases
+
+Every release is a tag named `<line>/<sdk-version>`:
+
+```bash
+git tag -l 'gen2/*'            # releases of the Gen2 line
+git tag -l 'gen1/*'            # releases of the Gen1 line
+git checkout gen2/<version>    # pin to one
 ```
 
-Platforms: macos-arm64 linux-arm64 linux-x64
+Each branch has its own README and MANIFEST.txt for that line.
 
-## Quick start
+## Support
 
-1. Plug the glove in and start the host for its side:
-
-   ```bash
-   ./driver/macos-arm64/proglove-headless-ipc-host --hand left
-   ```
-
-   It publishes the glove's status on `ipc:///tmp/proglove-left-status.ipc`.
-
-1. Read it from Python:
-
-   ```python
-   import sys; sys.path.insert(0, "sdk/proglove_sdk/python")
-   import proglove_sdk
-
-   with proglove_sdk.ProGloveClient("ipc:///tmp/proglove-left-status.ipc") as client:
-       client.send_ping()
-       status = client.try_recv_status()
-       if status and status.is_valid:
-           print(status.t_dip)
-   ```
-
-   C and C++: `sdk/proglove_sdk/cpp/include/proglove_sdk/`. Android: `sdk/proglove_sdk/android/`.
-
-On Linux, run `driver/udev/install-udev-rules.sh` once for non-root USB access.
-
-## License
-
-The SDK libraries and drivers are proprietary (`LICENSE`). Use requires
-Proception hardware.
+- Email: contact@proception.ai
+- [LICENSE](LICENSE)
