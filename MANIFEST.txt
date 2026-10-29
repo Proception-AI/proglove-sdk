@@ -1,5 +1,5 @@
-ProGlove SDK 0.4.14.1
-ProWristCam SDK 0.4.4.0
-Source: Proception-AI/pro e63b113b23
+ProGlove SDK 2.0.0.0
+ProWristCam SDK 2.0.0.0
+Source: Proception-AI/pro edf2f10e5c
 Platforms: macos-arm64 linux-arm64 linux-x64
-Built: 2026-10-22T01:53:41Z
+Built: 2026-10-29T03:26:03Z

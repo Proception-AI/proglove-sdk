@@ -4,7 +4,7 @@ Client SDKs and host drivers for the ProGlove tactile glove (`PRO-G01` /
 `PRO-G02`) and the ProWristCam wrist camera.
 
 Product line `gen2` (branch `release/gen2`) · ProGlove SDK
-0.4.14.1 · ProWristCam SDK 0.4.4.0
+2.0.0.0 · ProWristCam SDK 2.0.0.0
 
 Releases of this line are tags named `gen2/<version>`.
 

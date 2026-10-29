@@ -1,6 +1,6 @@
 # ProGlove drivers — linux-arm64
 
-ProGlove SDK 0.4.14.1 · ProWristCam SDK 0.4.4.0
+ProGlove SDK 2.0.0.0 · ProWristCam SDK 2.0.0.0
 
 `proglove-headless-ipc-host` owns the glove's USB link, filters the tactile
 stream and publishes it over ZeroMQ for the SDK:
